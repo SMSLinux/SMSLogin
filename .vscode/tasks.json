@@ -2,13 +2,12 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build main.c",
+            "label": "build-linux",
             "type": "shell",
-            "command": "gcc",
+            "command": "bash",
             "args": [
-                "main.c",
-                "-o",
-                "${workspaceFolder}/bin/main"
+                "-c",
+                "mkdir -p bin && gcc main.c -o bin/main"
             ],
             "group": {
                 "kind": "build",
@@ -17,22 +16,24 @@
             "problemMatcher": [
                 "$gcc"
             ],
-            "detail": "编译 main.c 到 bin 目录"
+            "detail": "Linux: 自动创建 bin 目录并编译 main.c"
         },
         {
-            "label": "build (with mkdir)",
+            "label": "build-win",
             "type": "shell",
-            "command": "bash",
+            "command": "cmd",
             "args": [
-                "build.sh"
+                "/c",
+                "if not exist bin mkdir bin && gcc main.c -o bin/main.exe"
             ],
             "group": {
                 "kind": "build",
                 "isDefault": false
             },
-            "problemMatcher": ["$gcc"],
-            "detail": "自动创建 bin 目录并编译 main.c"
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Windows: 自动创建 bin 目录并编译 main.c"
         }
-            ]
-        }
-    
+    ]
+}
