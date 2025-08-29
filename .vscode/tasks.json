@@ -1,0 +1,38 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build main.c",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "main.c",
+                "-o",
+                "${workspaceFolder}/bin/main"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "编译 main.c 到 bin 目录"
+        },
+        {
+            "label": "build (with mkdir)",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "build.sh"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "自动创建 bin 目录并编译 main.c"
+        }
+            ]
+        }
+    
